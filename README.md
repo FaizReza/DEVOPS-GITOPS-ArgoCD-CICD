@@ -1,3 +1,21 @@
+## Project Description
+
+DEVOPS-GITOPS-ArgoCD-CICD is a complete end-to-end DevOps demo that takes a simple Java Servlet (packaged as a WAR), containerizes it with Docker, and deploys it to Kubernetes using GitOps with Argo CD.
+
+#### The project includes:
+
+- A Java web application (pom.xml + servlet code + JSP) built with Maven into target/java-example.war.
+- A Docker workflow (dockerfile) that runs the WAR on Apache Tomcat.
+- A Helm chart (argocdhelm/) that defines the Kubernetes Deployment and Service for the application.
+- A GitHub Actions CI/CD pipeline (.github/workflows/main.yml) that:
+  1. Builds the app with Maven,
+  2. Builds and pushes the Docker image to Docker Hub,
+  3. Updates argocdhelm/values.yaml with the new image tag,
+  4. Lets Argo CD detect and deploy the updated Helm values automatically (GitOps approach).
+  
+The goal is to demonstrate how CI builds an immutable image, Git tracks the deployment configuration change (Helm values), and Argo CD performs the Kubernetes rollout based on the repository state.
+
+
 ## Overview
 This repo contains a small Java Servlet webapp (packaged as a WAR) plus:
 
